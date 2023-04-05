@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<div th:fragment="matches" id="matches">
+  <div class="album py-5 bg-body-tertiary">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col" th:each="celebrity, iter : ${celebrities}">
+          <div class="card shadow-sm">
+            <img class="card-img-top"
+                 th:src="${celebrity.image}"
+                 th:alt="${celebrity.name}"
+                 style="height: 60%; width: 60%; align-self: center;">
+            <div class="card-body">
+              <p class="card-text" th:text="${celebrity.name}">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a th:href="${celebrity.url}" type="button" class="btn btn-sm btn-outline-secondary" target="_blank">View</a>
+                </div>
+                <small class="text-body-secondary" th:text="|${#numbers.formatDecimal(scores[iter.index], 1, 'DEFAULT', 2, 'DEFAULT')}% pop: ${celebrity.popularity}|">1234</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</html>
